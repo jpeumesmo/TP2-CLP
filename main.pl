@@ -157,11 +157,11 @@ while ($menuControle != 0){
                     when(1){
                         print ("Digite o Nome da disciplina: ");
                         $nome = <STDIN>;
-                        print ("\nDigite o Código da disciplina");
+                        print ("\nDigite o Código da disciplina: ");
                         $codigo = <STDIN>;
-                        print("\nDigite a Carga Horária da disciplina");
+                        print("\nDigite a Carga Horária da disciplina: ");
                         $carga = <STDIN>;
-                        print("\nDigite o Valor da disciplina");
+                        print("\nDigite o Valor da disciplina: ");
                         $valor = <STDIN>;
                         $disciplina = Disciplina->new($nome,$codigo,$carga,$valor);
                         push(@disciplinas, $disciplina);
