@@ -15,7 +15,9 @@ sub new{
     $self->{nome} = $nome;
     $self->{codigo} = $codigo;
     $self->{duracao} = $duracao;
+
     $self->{grade} = %grade;
+    print("as ",%grade,);
 
     return $self;
 
@@ -25,7 +27,7 @@ sub printar{
     my $self = shift;
     print("CURSO\n","Nome: ",$self->{nome},"\n","Codigo: ",$self->{codigo},"\n","Duracao: ",$self->{duracao},"\n");
 
-    print("teste ",$self->{grade});
+#    print("teste ",$self->{grade});
 #    while ( my ($key, $value) = each($self->{grade}) ) {
 #           print "$value->{nome}\n";
 #    }

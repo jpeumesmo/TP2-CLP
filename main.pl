@@ -20,6 +20,7 @@ use Matricula;
 @cursos;
 @disciplinas;
 @matriculas;
+%matriz;
 
 $enter;
 $menuControle = 1;
@@ -172,17 +173,16 @@ while ($menuControle != 0){
                                 if($add eq "s"){
                                     print("\nDigite o semestre desejado: ");
                                     $semestre = <STDIN>;
-                                    $grade{$semestre} = $disciplina;
+                                    chomp $semestre;
+                                    $grade{$semestre} =  $disciplina;
                                     print("\nDisciplina adicionada com sucesso!\n");
                                 }
                             }
                         }
-                        $curso = Curso->new($nome,$codigo,$duracao,%grade);
+                        $curso = Curso->new($nome,$codigo,$duracao);
+                        $matriz{$curso->{nome}} = \%grade;
                         push(@cursos, $curso);
                         print("Curso cadastrado com sucesso!\n");
-
-                        print ("teste ",$curso->{nome},$curso->{grade});
-
                         print("Aperte enter");
                         $enter = <STDIN>;
                         system("clear");
@@ -217,6 +217,7 @@ while ($menuControle != 0){
                                         if($add eq "s"){
                                             print("\nDigite o semestre desejado: ");
                                             $semestre = <STDIN>;
+                                            chomp $semestre;
                                             $grade{$semestre} = $disciplina;
                                             print("\nDisciplina adicionada com sucesso!\n");
                                         }
@@ -244,6 +245,10 @@ while ($menuControle != 0){
                         }else{
                             foreach $curso (@cursos) {
                                 $curso->printar($curso);
+                                print("Disciplinas: ");
+                                for (my $i=0; $i <= $curso->{duracao}; $i++) {
+                                    print($matriz{$curso->{nome}}{$i}->{nome} );
+                                }
                             }
                         }
                         print("Aperte enter");
