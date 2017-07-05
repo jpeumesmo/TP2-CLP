@@ -158,7 +158,7 @@ while ($menuControle != 0){
                         print ("Digite o Nome da disciplina: ");
                         $nome = <STDIN>;
                         print ("\nDigite o Código da disciplina");
-                        $codigo = <STDIN>:
+                        $codigo = <STDIN>;
                         print("\nDigite a Carga Horária da disciplina");
                         $carga = <STDIN>;
                         print("\nDigite o Valor da disciplina");
