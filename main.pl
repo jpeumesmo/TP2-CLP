@@ -19,6 +19,7 @@ use Matricula;
 @cursos;
 @disciplinas;
 @matriculas;
+%grade;
 
 $enter;
 $menuControle = 1;
@@ -27,7 +28,7 @@ while ($menuControle != 0){
     print("SISTEMA DE GERENCIAMENTO DE ACADEMICO","\n");
     print("\n");
     print("\n");
-    print("1- Menu de Alunos","\n","2- Menu de Cursos","\n","3- Menu de Disciplias","\n","4- Menu de Matriculas","\n","0- Sair","\n");
+    print("1- Menu de Alunos","\n","2- Menu de Cursos","\n","3- Menu de Disciplias","\n","4- Menu de Matriculas","\n","5- Criar Grade Curricular","\n","0- Sair","\n");
     print("\n");
     print("Digite a opcao desejada");
     print ("\n");
@@ -246,9 +247,27 @@ while ($menuControle != 0){
                 }
             }
         }
+
+        #MATRICULAS
         when (4){
 
         }
+
+        #GRADE CURRICULAR
+        when(5){
+
+            foreach $disciplina (@disciplinas){
+                print($disciplina->{nome},"\n");
+                print ("Digite o semestre ao qual pertence a disciplina acima: ");
+                $semestre = <STDIN>;
+                $grade{$semestre} = $disciplina;
+            }
+            print("Aperte enter");
+            $enter = <STDIN>;
+            system("clear");
+
+        }
+        #SAIR
         when (0){
             next;
         }
