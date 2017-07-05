@@ -17,4 +17,11 @@ sub new{
     return $self;
 }
 
+
+sub printar{
+    my $self = shift;
+    print("MATRICULA\n","Numero: ",$self->{numero},"\n","Periodo: ",$self->{periodo},"\n","Aluno: ",$self->{aluno},"\n\n");
+    return;
+}
+
 1;
