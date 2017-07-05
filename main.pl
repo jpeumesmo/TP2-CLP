@@ -20,7 +20,7 @@ use Matricula;
 @disciplinas;
 @matriculas;
 
-$entre;
+$enter;
 $menuControle = 1;
 
 while ($menuControle != 0){
@@ -34,11 +34,12 @@ while ($menuControle != 0){
     $menuControle = <STDIN>;
     system("clear");
     given($menuControle){
+        #ALUNOS
         when (1){
             $menuControleAluno = 1;
             while ($menuControleAluno != 0 ){
                 print("Menu de Controle de Alunos \n");
-                print("1- Adiconar Aluno\n","2- Alterar Aluno\n","3- Remover Aluno\n","4- Visualizar Alunos Cadastrados\n","0 - Voltar\n");
+                print("1- Adiconar Aluno\n","2- Alterar Aluno\n","3- Remover Aluno\n","4- Visualizar Alunos Cadastrados\n","0- Voltar\n");
                 print("Digite a opcao desejada\n");
                 $menuControleAluno = <STDIN>;
                 system("clear");
@@ -56,18 +57,18 @@ while ($menuControle != 0){
                         push(@alunos, $aluno);
                         print("Aluno adicionado com sucesso\n");
                         print("Aperte enter");
-                        $entre = <STDIN>;
+                        $enter = <STDIN>;
                         system("clear");
                     }
                     when (2){
                         print("Digite o nome do aluno que deseja alterar o cadastro: ");
                         $nomeAlterar = <STDIN>;
                         print("\n");
-                        $alunoEcontrado = 0;
+                        $alunoEncontrado = 0;
                         $index = 0;
                         foreach $aluno (@alunos){
-                            if ($aluno->{nome} eq $nomeAlterar && $alunoEcontrado == 0){
-                                $alunoEcontrado = 1;
+                            if (($aluno->{nome} eq $nomeAlterar) && $alunoEncontrado == 0){
+                                $alunoEncontrado = 1;
                                 delete $alunos[$index];
                                 print ("Digite o nome do aluno: ");
                                 $nome = <STDIN>;
@@ -83,40 +84,45 @@ while ($menuControle != 0){
                             }
                             $index++;
                         }
-                        if ($alunoEcontrado == 0){
+                        if ($alunoEncontrado == 0){
                             print("Aluno não cadastrado!\n");
                         }
                         print("Aperte enter");
-                        $entre = <STDIN>;
+                        $enter = <STDIN>;
                         system("clear");
                     }
                     when (3){
                         print("Digite o nome do aluno que deseja remover o cadastro: ");
                         $nomeRemover = <STDIN>;
                         print("\n");
-                        $alunoEcontrado = 0;
+                        $alunoEncontrado = 0;
                         $index = 0;
                         foreach $aluno (@alunos){
-                            if ($aluno->{nome} eq $nomeAlterar && $alunoEcontrado == 0){
-                                $alunoEcontrado = 1;
+                            if (($aluno->{nome} eq $nomeAlterar) && $alunoEncontrado == 0){
+                                $alunoEncontrado = 1;
                                 delete $alunos[$index];
-                                print("Cadastro do aluno removido com sucesso");
+                                print("Cadastro do aluno removido com sucesso\n");
                             }
                         }
-                        if ($alunoEcontrado == 0){
+                        if ($alunoEncontrado == 0){
                             print("Aluno não cadastrado!\n");
                         }
                         print("Aperte enter");
-                        $entre = <STDIN>;
+                        $enter = <STDIN>;
                         system("clear");
                     }
                     when(4){
-                        foreach $aluno (@alunos) {
-                            $aluno->printar($aluno);
+                        if(scalar(@alunos) == 0){
+                            print("Nenhum aluno cadastrado");
+                        }else{
+                            foreach $aluno (@alunos) {
+                                $aluno->printar($aluno);
+                            }
                         }
                         print("Aperte enter");
-                        $entre = <STDIN>;
+                        $enter = <STDIN>;
                         system("clear");
+
                     }
                     when (0){
                         next;
@@ -125,18 +131,120 @@ while ($menuControle != 0){
                     default{
                         print "Operacao invalida";
                         print("Aperte enter");
-                        $entre = <STDIN>;
+                        $enter = <STDIN>;
                         system("clear");
                     }
                 }
             }
             system("clear");
         }
+
+        #CURSOS
         when (2){
 
         }
-        when (3){
 
+        #DISCIPLINAS
+        when (3){
+            $menuControleDisciplina = 1;
+            while ($menuControleDisciplina != 0 ){
+                print("Menu de Controle de Disciplinas \n");
+                print("1- Adiconar Disciplina\n","2- Alterar Disciplina\n","3- Remover Disciplina\n","4- Visualizar Disciplinas Cadastradas\n","0- Voltar\n");
+                print("Digite a opcao desejada\n");
+                $menuControleDisciplina = <STDIN>;
+                system("clear");
+                given($menuControleDisciplina){
+                    when(1){
+                        print ("Digite o Nome da disciplina: ");
+                        $nome = <STDIN>;
+                        print ("\nDigite o Código da disciplina");
+                        $codigo = <STDIN>:
+                        print("\nDigite a Carga Horária da disciplina");
+                        $carga = <STDIN>;
+                        print("\nDigite o Valor da disciplina");
+                        $valor = <STDIN>;
+                        $disciplina = Disciplina->new($nome,$codigo,$carga,$valor);
+                        push(@disciplinas, $disciplina);
+                        print("Disciplina adicionada com sucesso\n");
+                        print("Aperte enter");
+                        $enter = <STDIN>;
+                        system("clear");
+                    }
+                    when(2){
+                        print("Digite o codigo da disciplina que deseja alterar o cadastro: ");
+                        $codigoAlterar = <STDIN>;
+                        print("\n");
+                        $disciplinaEncontrada = 0;
+                        $index = 0;
+                        foreach $disciplina (@disciplinas){
+                            if (($disciplina->{codigo} eq $codigoAlterar) && $disciplinaEncontrada == 0){
+                                $disciplinaEncontrada = 1;
+                                delete $disciplinas[$index];
+                                print ("Digite o nome da disciplina: ");
+                                $nome = <STDIN>;
+                                print("\nDigite o codigo da disciplina: ");
+                                $codigo = <STDIN>;
+                                print("\nDigite a Carga Horaria da disciplina: ");
+                                $carga = <STDIN>;
+                                print("\nDigite o o valor da disciplina: ");
+                                $valor = <STDIN>;
+                                $disciplina = Disciplina->new($nome,$codigo,$carga,$valor);
+                                push(@disciplinas, $disciplina);
+                                print("Disciplina alterada com sucesso\n");
+                            }
+                            $index++;
+                        }
+                        if ($alunoEncontrado == 0){
+                            print("Disciplina não cadastrada!\n");
+                        }
+                        print("Aperte enter");
+                        $enter = <STDIN>;
+                        system("clear");
+                    }
+                    when(3){
+                        print("Digite o codigo da disciplina que deseja remover o cadastro: ");
+                        $codigoRemover = <STDIN>;
+                        print("\n");
+                        $disciplinaEncontrada = 0;
+                        $index = 0;
+                        foreach $disciplina (@disciplinas){
+                            if (($disciplina->{codigo} eq $codigoRemover) && $disciplinaEncontrada == 0){
+                                $disciplinaEncontrada = 1;
+                                delete $disciplinas[$index];
+                                print("Cadastro da disciplina removido com sucesso\n");
+                            }
+                        }
+                        if ($disciplinaEncontrada == 0){
+                            print("Disciplina não cadastrada!\n");
+                        }
+                        print("Aperte enter");
+                        $enter = <STDIN>;
+                        system("clear");
+                    }
+                    when(4){
+                        if(scalar(@disciplinas) == 0){
+                            print("Nenhuma disciplina cadastrado");
+                        }else{
+                            foreach $disciplina (@disciplinas) {
+                                $disciplina->printar($disciplina);
+                            }
+                        }
+                        print("Aperte enter");
+                        $enter = <STDIN>;
+                        system("clear");
+                    }
+                    when(0){
+                        next;
+                        system("clear");
+                    }
+                    default{
+                        print "Operacao invalida";
+                        print("Aperte enter");
+                        $enter = <STDIN>;
+                        system("clear");
+                    }
+                }
+            }
         }
         when (4){
 
