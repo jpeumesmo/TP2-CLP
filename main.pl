@@ -194,7 +194,7 @@ while ($menuControle != 0){
                             }
                             $index++;
                         }
-                        if ($alunoEncontrado == 0){
+                        if ($disciplinaEncontrada == 0){
                             print("Disciplina não cadastrada!\n");
                         }
                         print("Aperte enter");
