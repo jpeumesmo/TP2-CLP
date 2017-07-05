@@ -245,9 +245,9 @@ while ($menuControle != 0){
                         }else{
                             foreach $curso (@cursos) {
                                 $curso->printar($curso);
-                                print("Disciplinas: ");
+                                print("Disciplinas: \n");
                                 for (my $i=0; $i <= $curso->{duracao}; $i++) {
-                                    print($matriz{$curso->{nome}}{$i}->{nome} );
+                                    print($matriz{$curso->{nome}}{$i}->{nome});
                                 }
                             }
                         }
