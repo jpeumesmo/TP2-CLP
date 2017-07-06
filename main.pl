@@ -434,8 +434,9 @@ while ($menuControle != 0){
             }
             print("\nDigite o Periodo do Aluno: ");
             $periodo = <STDIN>;
-            chomp $periodo;
-            $matricula = Matricula->new($numero,$alunoAux,$periodo,$matriz{$alunoAux->{curso}}{$periodo}->{valor});
+            chomp $period$matriz{$alunoAux->{curso}}{$periodo}->{valor};
+            $valorTotal = $matriz{$alunoAux->{curso}->{nome}}{$periodo}->{valor};
+            $matricula = Matricula->new($numero,$alunoAux,$periodo,$valorTotal);
             push(@matriculas,$matricula);
             print("Matrícula adicionada com sucesso\n");
             print("Aperte enter");
