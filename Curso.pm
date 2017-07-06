@@ -12,7 +12,6 @@ sub new{
   $self->{codigo} = $codigo;
   $self->{duracao} = $duracao;
   $self->{grade} = %grade;
-  print("as ",%grade,);
   return $self;
 }
 sub printar{

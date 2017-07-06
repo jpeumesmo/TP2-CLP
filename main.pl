@@ -1,6 +1,7 @@
 use Data::Dumper;
 use feature 'switch';
 no if $] >= 5.018, warnings => qw( experimental::smartmatch );
+no warnings qw( experimental::autoderef );
 use lib '/home/jpeumesmo/UFSJ/CLP/TP2';
 use Aluno;
 use Curso;
