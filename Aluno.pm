@@ -21,7 +21,7 @@ sub new{
 
 sub printar{
     my $self = shift;
-    print("ALUNO\n","Nome: ",$self->{nome},"\n","Email: ",$self->{email},"\n","Rendimento do Aluno: ",$self->{RA},"\n","Curso: ",$self->{curso},"\n\n");
+    print("ALUNO\n","Nome: ",$self->{nome},"Email: ",$self->{email},"Rendimento do Aluno: ",$self->{RA},"Curso: ",$self->{curso},"\n");
     return;
 }
 
